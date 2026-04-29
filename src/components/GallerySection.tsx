@@ -91,7 +91,7 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
   return (
     <section className="section-panel flex flex-col relative h-screen overflow-hidden">
       <div className="absolute inset-0">
-        <img src={sectionLandscape} alt="Landscape" className="w-full h-full object-cover opacity-20" />
+        <img src={sectionLandscape} alt="Gallery background" className="w-full h-full object-cover opacity-20" />
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
@@ -99,7 +99,7 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
         <div ref={marqueeRef} className="marquee-track whitespace-nowrap">
           {Array.from({ length: 8 }).map((_, i) => (
             <span key={i} className="font-display text-8xl text-outline mx-8 select-none">
-              ПРОЕКТЫ
+              PROJECTS
             </span>
           ))}
         </div>
@@ -108,10 +108,10 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
       <div className="relative z-10 flex-1 flex flex-col justify-center pt-24 pb-16">
         <div className="hidden md:block px-16 mb-8">
           <h2 ref={titleRef} className="font-display text-5xl font-bold text-foreground">
-            Наши <span className="text-gradient-gold">Проекты</span>
+            Our <span className="text-gradient-gold">Projects</span>
           </h2>
           <p className="font-body text-muted-foreground text-sm mt-2 max-w-md">
-            Коллекция наших лучших веб-решений, продуманных интерфейсов и уникального дизайна.
+            A curated collection of our finest web solutions, thoughtful interfaces, and distinctive design work.
           </p>
         </div>
 
@@ -119,18 +119,18 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-primary/80"></div>
             <span className="font-body text-[10px] tracking-[0.3em] uppercase text-primary font-medium">
-              Избранное
+              Featured
             </span>
           </div>
           <h2
             ref={mobileTitleRef}
             className="font-display text-6xl font-black text-foreground leading-[0.9] tracking-tighter uppercase"
           >
-            Наши <br />
-            <span className="text-gradient-gold inline-block mt-1">Проекты</span>
+            Our <br />
+            <span className="text-gradient-gold inline-block mt-1">Projects</span>
           </h2>
           <p className="font-body text-muted-foreground text-xs mt-6 max-w-[280px] mx-auto border-l-[1px] border-primary/40 pl-4 text-left leading-relaxed">
-            Коллекция лучших веб-решений и уникального дизайна для вашего бизнеса.
+            Showcasing premium web solutions and unique design crafted to elevate your business.
           </p>
         </div>
 
@@ -157,12 +157,12 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
                 <div className="relative aspect-video w-full overflow-hidden group border border-white/10">
                   <img
                     src={img}
-                    alt={`Проект ${i + 1}`}
+                    alt={`Project ${i + 1}`}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-500" />
                   <div className="absolute bottom-4 left-4 font-body text-xs tracking-[0.3em] uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    КЕЙС {String(i + 1).padStart(2, "0")}
+                    CASE {String(i + 1).padStart(2, "0")}
                   </div>
                 </div>
               </SwiperSlide>
@@ -189,7 +189,7 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
               ref={staticTextRef}
               className="absolute font-body text-[11px] md:text-sm tracking-[0.3em] uppercase whitespace-nowrap text-[#B8963F]"
             >
-              Наши Услуги
+              Our Services
             </span>
 
             <div ref={marqueeWrapperRef} className="absolute flex w-full h-full items-center pointer-events-none">
@@ -200,7 +200,7 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
                 <span className="flex">
                   {Array.from({ length: 6 }).map((_, j) => (
                     <span key={j} className="mx-6">
-                      ВЕБ-ДИЗАЙН • РАЗРАБОТКА • SEO • БРЕНДИНГ
+                      WEB DESIGN • DEVELOPMENT • SEO • BRANDING
                     </span>
                   ))}
                 </span>
@@ -208,7 +208,7 @@ const GallerySection = ({ isActive }: { isActive: boolean }) => {
                 <span className="flex">
                   {Array.from({ length: 6 }).map((_, j) => (
                     <span key={j} className="mx-6">
-                      ВЕБ-ДИЗАЙН • РАЗРАБОТКА • SEO • БРЕНДИНГ
+                      WEB DESIGN • DEVELOPMENT • SEO • BRANDING
                     </span>
                   ))}
                 </span>

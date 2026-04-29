@@ -44,7 +44,6 @@ type WorkType = {
   img: string;
   title: string;
   category: string;
-  priceByn: string;
   priceUsd: string;
 };
 
@@ -52,29 +51,25 @@ const workTypes: WorkType[] = [
   { 
     img: Project10, 
     title: "Landing Page", 
-    category: "Лендинг", 
-    priceByn: "от 199 BYN",
-    priceUsd: "from ~$61"
+    category: "Landing Page", 
+    priceUsd: "from $100"
   },
   { 
     img: Project11, 
-    title: "Интернет магазин", 
-    category: "Магазин", 
-    priceByn: "от 899 BYN",
-    priceUsd: "from ~$276"
+    title: "E-commerce Store", 
+    category: "E-commerce", 
+    priceUsd: "from $300"
   },
   { 
     img: Project12, 
-    title: "Corporate", 
-    category: "Корпоративный", 
-    priceByn: "от 599 BYN",
-    priceUsd: "from ~$184"
+    title: "Corporate Website", 
+    category: "Corporate", 
+    priceUsd: "from $200"
   },
   { 
     img: Project28, 
     title: "Custom Web", 
-    category: "Индивидуальные проекты", 
-    priceByn: "Индивидуально",
+    category: "Custom Projects", 
     priceUsd: "Custom pricing"
   },
 ];
@@ -82,34 +77,34 @@ const workTypes: WorkType[] = [
 const projectsData: Project[] = [
   {
     title: "Landing Page",
-    category: "Лендинг",
+    category: "Landing Page",
     video: "/vivavid.mp4",
     gallery: [viva1, viva2, viva3],
-    description: "Разработка высококонверсионного лендинга с глубокой проработкой воронки продаж и пользовательского опыта (UX/UI). Мы создаем не просто одностраничный сайт, а полноценный маркетинговый инструмент, который сочетает в себе сильные офферы, триггеры доверия и логическую структуру захвата внимания, превращая холодный трафик в лояльных клиентов.",
+    description: "High-conversion landing page development with deep sales funnel optimization and UX/UI refinement. We don't just build one-page sites — we create powerful marketing tools that combine compelling offers, trust signals, and strategic attention flow to turn cold traffic into loyal customers.",
     link: "https://www.vivashopminsk.by",
   },
   {
-    title: "Интернет Магазин",
-    category: "Магазин",
+    title: "E-commerce Store",
+    category: "E-commerce",
     video: "/rumorvid.mp4",
     gallery: [rumor1, rumor2, rumor3, rumor4],
-    description: "Проект представляет собой полноценную e-commerce экосистему. Ключевые преимущества — продуманная информационная архитектура, позволяющая пользователю мгновенно находить целевые товары через адаптивное меню и фильтры, и бесшовный процесс чекаута. Интеграция надежных платежных шлюзов обеспечивает безопасность транзакций и поддержку любых удобных для клиента методов оплаты.",
+    description: "A complete e-commerce ecosystem designed for performance. Key advantages include intuitive information architecture for instant product discovery via adaptive menus and filters, plus a seamless checkout experience. Integrated secure payment gateways ensure transaction safety and support all preferred customer payment methods.",
     link: "https://www.rumor.by",
   },
   {
-    title: "Corporate",
-    category: "Корпоративный",
+    title: "Corporate Website",
+    category: "Corporate",
     video: "/fitnessvid.mp4",
     gallery: [fitness1, fitness2, fitness3, fitness4],
-    description: "Корпоративный сайт для представления бизнеса — это современное решение для укрепления имиджа компании. Мы создаем информативные ресурсы, которые рассказывают о ваших услугах, преимуществах и команде. Удобная навигация, адаптивный дизайн и полная информация о контактах всегда помогают клиентам быстро найти нужную информацию и оставить заявку на сотрудничество сегодня.",
+    description: "A modern corporate website strengthens your brand identity and communicates your value proposition. We build informative, responsive resources that showcase your services, advantages, and team. Clear navigation and complete contact information help clients find what they need and reach out — today.",
     link: "https://www.bigfitness.b",
   },
   {
     title: "Custom Web",
-    category: "Индивидуальные проекты",
+    category: "Custom Projects",
     video: "/mayak.mp4",
     gallery: [mayak1, mayak2, mayak3],
-    description: "Мы предлагаем индивидуальные решения под любые задачи вашего бизнеса. Независимо от сложности проекта, наша команда разрабатывает персонализированные стратегии для достижения целей. Гибкий подход, учет всех требований и пожеланий заказчика гарантируют высокий результат. Каждый проект уникален, поэтому мы создаем продукты, которые идеально соответствуют вашим потребностям и помогают развиваться эффективнее.",
+    description: "Tailored web solutions for any business challenge. Regardless of complexity, our team develops personalized strategies to achieve your goals. With a flexible approach and close attention to your requirements, we deliver unique products that align perfectly with your needs and drive efficient growth.",
     link: "https://www.d-k-mayak.ru",
   },
 ];
@@ -117,7 +112,7 @@ const projectsData: Project[] = [
 const ProjectsSection = ({ isActive }: { isActive: boolean }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [currency, setCurrency] = useState<'BYN' | 'USD'>('BYN');
+  // const [currency, setCurrency] = useState<'BYN' | 'USD'>('USD'); // Default to USD
 
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const bgRef = useRef<HTMLDivElement>(null);
@@ -156,18 +151,14 @@ const ProjectsSection = ({ isActive }: { isActive: boolean }) => {
     }
   };
 
-  const getPrice = (work: WorkType) => {
-    return currency === 'BYN' ? work.priceByn : work.priceUsd;
-  };
-
-  const toggleCurrency = () => {
-    setCurrency(prev => prev === 'BYN' ? 'USD' : 'BYN');
-  };
+  // const toggleCurrency = () => {
+  //   setCurrency(prev => prev === 'BYN' ? 'USD' : 'BYN');
+  // };
 
   return (
     <section id="projects" className="section-panel flex flex-col lg:flex-row relative min-h-screen py-20 lg:py-0">
       <div ref={bgRef} className="absolute inset-0">
-        <img src={sectionArch} alt="Фон" className="w-full h-full object-cover opacity-30" />
+        <img src={sectionArch} alt="Projects background" className="w-full h-full object-cover opacity-30" />
         <div
           className="absolute inset-0"
           style={{
@@ -180,47 +171,21 @@ const ProjectsSection = ({ isActive }: { isActive: boolean }) => {
       {/* Left side info */}
       <div className="relative z-10 w-full lg:w-1/3 flex flex-col justify-center px-6 lg:pl-16 lg:pr-8 mb-12 lg:mb-0">
         <p className="font-body text-xs tracking-[0.4em] uppercase text-primary mb-4">
-          Направления
+          Services
         </p>
         <h2 className="font-display text-5xl md:text-6xl font-bold leading-tight text-foreground mb-6">
-          Проекты
+          Our
           <br />
-          <span className="text-gradient-gold">CodeLab</span>
+          <span className="text-gradient-gold">Projects</span>
         </h2>
         <div className="w-16 h-[1px] bg-primary mb-6" />
         <p className="font-body text-muted-foreground text-sm leading-relaxed max-w-sm">
-          Каждый проект — это инструмент для бизнеса. Выберите формат, который подходит под ваши задачи. Выберите подходящий формат сайта. Все проекты адаптируем под мобильные устройства и SEO- требования."
+          Every project is a business tool. Choose the format that fits your goals. 
+          All projects are fully responsive and SEO-optimized.
         </p>
 
-        {/* Currency Toggle Button */}
-       {/* Currency Toggle Button */}
-<div className="flex items-center gap-3 mt-6">
-  <span className={`text-xs font-medium transition-colors ${currency === 'BYN' ? 'text-foreground' : 'text-muted-foreground'}`}>
-    BYN
-  </span>
-  <button
-    onClick={toggleCurrency}
-    className={`relative w-14 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
-      currency === 'USD' ? 'bg-primary' : 'bg-white/20'
-    }`}
-    aria-label={`Switch to ${currency === 'BYN' ? 'USD' : 'BYN'}`}
-  >
-    {/* Toggle knob */}
-    <span
-      className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-md transition-transform duration-300 ease-out flex items-center justify-center ${
-        currency === 'USD' ? 'translate-x-6' : 'translate-x-0'
-      }`}
-    >
-      {/* Optional: tiny currency indicator inside knob */}
-      <span className={`text-[9px] font-bold ${currency === 'USD' ? 'text-primary' : 'text-muted-foreground'}`}>
-        {currency === 'USD' ? '$' : 'Br'}
-      </span>
-    </span>
-  </button>
-  <span className={`text-xs font-medium transition-colors ${currency === 'USD' ? 'text-foreground' : 'text-muted-foreground'}`}>
-    USD
-  </span>
-</div>
+        {/* Currency Toggle Button - USD only display */}
+       
 
         <div className="hidden lg:block h-24 mt-4 transition-all">
           {hoveredIndex !== null && (
@@ -268,7 +233,7 @@ const ProjectsSection = ({ isActive }: { isActive: boolean }) => {
               <div className="absolute inset-0 bg-gradient-overlay opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary">
-                  {getPrice(work)}
+                  {work.priceUsd}
                 </p>
                 <p className="font-display text-lg text-foreground mt-1">
                   {work.title}

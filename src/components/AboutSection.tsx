@@ -12,7 +12,7 @@ import gallery1 from "@/assets/gallery-1.jpg";
 const Model = () => {
   const { scene } = useGLTF("/models/appl_e_iph_one_16/scene.gltf");
   
-  // Адаптивный масштаб: +5% от предыдущего (21 на мобильных, 21 на ПК)
+  // Adaptive scale: +5% from previous (21 on mobile, 21 on desktop)
   const [scale, setScale] = React.useState(21);
 
   React.useEffect(() => {
@@ -47,7 +47,7 @@ const IPhoneViewer: React.FC = () => {
         
         <Environment preset="city" />
         
-        <Suspense fallback={<Html center><span className="text-white/50 text-sm">Загрузка 3D...</span></Html>}>
+        <Suspense fallback={<Html center><span className="text-white/50 text-sm">Loading 3D...</span></Html>}>
           <Model />
           <ContactShadows position={[0, -1, 0]} opacity={0.5} scale={10} blur={2} far={4} />
         </Suspense>
@@ -63,24 +63,24 @@ const IPhoneViewer: React.FC = () => {
 
 const coreCapabilities = [
   { 
-    title: "✓ Индивидуальный подход к каждому проекту", 
-    desc: "Глубоко погружаемся в ваш бизнес, задачи и аудиторию, чтобы создать решение, которое действительно работает." 
+    title: "✓ Tailored approach to every project", 
+    desc: "We dive deep into your business, goals, and audience to create a solution that truly delivers." 
   },
   { 
-    title: "✓ Прозрачные сроки и бюджет", 
-    desc: "Фиксируем этапы, стоимость и дедлайны заранее — без скрытых платежей и неожиданных изменений." 
+    title: "✓ Transparent timelines and budget", 
+    desc: "We lock in milestones, costs, and deadlines upfront — no hidden fees or surprise changes." 
   },
   { 
-    title: "✓ Поддержка после запуска", 
-    desc: "Не исчезаем после релиза — помогаем развивать, обновлять и масштабировать ваш проект." 
+    title: "✓ Post-launch support", 
+    desc: "We don't disappear after launch — we help you grow, update, and scale your project." 
   },
   { 
-    title: "✓ Современные технологии", 
-    desc: "Используем актуальные инструменты и фреймворки для скорости, безопасности и масштабируемости." 
+    title: "✓ Modern technology stack", 
+    desc: "We use cutting-edge tools and frameworks for speed, security, and scalability." 
   },
   { 
-    title: "✓ Ориентация на результат", 
-    desc: "Создаём сайты, которые приносят заявки, увеличивают продажи и помогают вашему бизнесу расти." 
+    title: "✓ Results-driven approach", 
+    desc: "We build websites that generate leads, boost sales, and help your business grow." 
   },
 ];
 
@@ -124,7 +124,7 @@ const AboutSection = ({ isActive }: { isActive: boolean }) => {
       
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <img src={sectionAbout} alt="Фон студии" className="w-full h-full object-cover opacity-30" />
+        <img src={sectionAbout} alt="Studio background" className="w-full h-full object-cover opacity-30" />
         <div
           className="absolute inset-0"
           style={{
@@ -145,7 +145,7 @@ const AboutSection = ({ isActive }: { isActive: boolean }) => {
             ref={imageRef}
             className="relative z-10 w-72 h-[420px] sm:w-80 sm:h-[480px] lg:w-86 lg:h-[77vh] overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.6)] lg:shadow-2xl border border-white/5 lg:border-none bg-black/20 backdrop-blur-sm rounded-xl"
           >
-            {/* Подсказка для вращения (появляется поверх 3D) */}
+            {/* Rotation hint (appears over 3D) */}
             <div className="absolute top-3 right-3 lg:top-6 lg:right-6 z-30 flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] text-white/70 select-none pointer-events-none">
               <svg className="w-3 h-3 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 2v6h-6" />
@@ -153,7 +153,7 @@ const AboutSection = ({ isActive }: { isActive: boolean }) => {
                 <path d="M3 22v-6h6" />
                 <path d="M21 12a9 9 0 0 1-15 6.7L3 16" />
               </svg>
-              <span>Покрутите</span>
+              <span>Drag to rotate</span>
             </div>
             
             <IPhoneViewer />
@@ -161,7 +161,7 @@ const AboutSection = ({ isActive }: { isActive: boolean }) => {
 
           {/* Floating Element (Gallery) */}
           <div className="absolute -bottom-10 -right-6 lg:-bottom-12 lg:-right-12 w-20 h-20 lg:w-40 lg:h-40 overflow-hidden border-2 border-gold glow-gold animate-float shadow-2xl z-20">
-            <img src={gallery1} alt="Мокап сайта" className="w-full h-full object-cover" />
+            <img src={gallery1} alt="Website mockup" className="w-full h-full object-cover" />
           </div>
 
           <div className="absolute -top-4 -left-4 lg:-top-6 lg:-left-6 w-16 h-16 lg:w-20 lg:h-20 border border-gold/40 z-20 pointer-events-none" />
@@ -176,18 +176,18 @@ const AboutSection = ({ isActive }: { isActive: boolean }) => {
         
         <div ref={textRef}>
           <p className="font-body text-[10px] lg:text-xs tracking-[0.4em] uppercase text-primary mb-4">
-            Веб-студия
+            Web Studio
           </p>
 
           <h2 className="font-display text-4xl sm:text-5xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
-            Мы создаем сайты,
+            We build websites
             <br />
-            <span className="text-gradient-gold italic">которые работают</span> на ваш бизнес.
+            <span className="text-gradient-gold italic">that work for your business.</span>
           </h2>
 
           <p className="font-body text-muted-foreground text-sm lg:text-base leading-relaxed max-w-xl mb-10">
-            От идеи до запуска — берем на себя все: дизайн, разработку, наполнение и SEO-оптимизацию.
-            Фиксируем сроки и бюджет. Поддерживаем после запуска.
+            From concept to launch — we handle everything: design, development, content, and SEO optimization. 
+            Fixed timelines and budget. Ongoing support after launch.
           </p>
         </div>
 

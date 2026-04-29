@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import heroBg from "@/assets/hero-bg.jpg";
-// import Scene3D from "./Scene3D"; // Раскомментируй, когда понадобится
+// import Scene3D from "./Scene3D"; // Uncomment when needed
 
 interface HeroSectionProps {
   scrollProgress: number;
@@ -26,21 +26,21 @@ const HeroSection = ({ scrollProgress, onNavigate }: HeroSectionProps) => {
   return (
     <section ref={containerRef} className="section-panel flex items-center justify-center relative min-h-screen">
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Фон студии" className="w-full h-full object-cover opacity-60" />
+        <img src={heroBg} alt="Studio background" className="w-full h-full object-cover opacity-60" />
         <div className="absolute inset-0 bg-gradient-overlay" />
       </div>
       
       {/* <Scene3D scrollProgress={scrollProgress} /> */}
 
       <div className="relative z-20 text-center px-6 md:px-8 max-w-5xl w-full">
-        {/* Верхний сабтайтл */}
+        {/* Top subtitle */}
         <div className="overflow-hidden mb-6">
           <p className="font-body text-xs md:text-sm tracking-[0.4em] uppercase text-primary mb-4 opacity-80">
-            Веб-разработка & Дизайн
+            Web Development & Design
           </p>
         </div>
         
-        {/* Главный заголовок */}
+        {/* Main headline */}
         <div className="overflow-hidden">
           <h1 ref={titleRef} className="font-display text-7xl md:text-[10rem] leading-[0.85] font-bold tracking-tight drop-shadow-2xl">
             <span className="text-gradient-gold">Code</span>
@@ -49,61 +49,61 @@ const HeroSection = ({ scrollProgress, onNavigate }: HeroSectionProps) => {
           </h1>
         </div>
         
-        {/* Декоративная линия */}
+        {/* Decorative line */}
         <div ref={lineRef} className="w-16 md:w-21 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent mx-auto my-10 origin-center opacity-50" />
         
-        {/* Обновленный текст описания */}
+        {/* Updated description text */}
         <p ref={subtitleRef} className="font-body text-gray-400 text-sm md:text-lg max-w-3xl mx-auto leading-relaxed md:leading-loose tracking-wide">
-          Создаем сайты, которые приносят результат. Беремся за{' '}
+          We build websites that deliver results. We take on{' '}
           <span className="text-gradient-gold font-medium tracking-wide mx-1 drop-shadow-md">
-            проекты любой сложности
+            projects of any complexity
           </span>
-          — от стильных визиток до мощных интернет-магазинов. 
+          — from sleek landing pages to powerful e-commerce platforms. 
           <span className="block mt-2 md:mt-1 text-white/70">
-            Безупречный код и современный дизайн.
+            Flawless code. Modern design.
           </span>
         </p>
 
-        {/* Обновленный блок с ценой и преимуществами */}
+        {/* Updated price & features block */}
         <div ref={featuresRef} className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mt-12 w-full">
           
-          {/* Плашка с ценой (Glassmorphism + Glow) */}
+          {/* Price badge (Glassmorphism + Glow) */}
           <div className="relative group cursor-default">
-            {/* Эффект свечения на фоне */}
+            {/* Glow effect background */}
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-md transition-all duration-700 group-hover:bg-primary/40 group-hover:blur-xl" />
             <div className="relative px-6 py-3 md:px-8 md:py-3.5 rounded-full border border-primary/30 bg-black/40 backdrop-blur-md flex items-center justify-center transition-colors duration-500 group-hover:border-primary/60">
               <span className="font-body text-primary tracking-[0.15em] text-xs md:text-sm uppercase font-medium">
-                Цены от 199 BYN
+                Prices from $100
               </span>
             </div>
           </div>
 
-          {/* Декоративный разделитель (скрыт на мобилках) */}
+          {/* Decorative separator (hidden on mobile) */}
           <span className="hidden md:inline-block text-primary/40 text-lg animate-pulse-glow">✦</span>
 
-          {/* Список услуг */}
+          {/* Services list */}
           <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 font-body tracking-[0.2em] uppercase text-[10px] md:text-xs text-muted-foreground/70">
-            <span className="hover:text-primary transition-colors duration-300 cursor-default">Лендинги</span>
+            <span className="hover:text-primary transition-colors duration-300 cursor-default">Landing Pages</span>
             <span className="hidden md:inline-block text-muted-foreground/30">/</span>
-            <span className="hover:text-primary transition-colors duration-300 cursor-default">Корпоративные сайты</span>
+            <span className="hover:text-primary transition-colors duration-300 cursor-default">Corporate Websites</span>
             <span className="hidden md:inline-block text-muted-foreground/30">/</span>
             <span className="hover:text-primary transition-colors duration-300 cursor-default">E-commerce</span>
           </div>
         </div>
 
-        {/* Кнопка */}
+        {/* CTA Button */}
         <button
           data-cursor-hover
           onClick={() => onNavigate(1)}
           className="magnetic-btn mt-14 px-10 py-4 border border-primary/50 font-body text-xs tracking-[0.3em] uppercase text-primary hover:bg-primary hover:text-black transition-all duration-500 backdrop-blur-sm"
         >
-          Обсудить проект
+          Let's Talk
         </button>
       </div>
 
-      {/* Плавающие элементы по углам */}
+      {/* Floating corner elements */}
       <div className="hidden md:flex absolute bottom-8 right-8 z-20 font-body text-[10px] md:text-xs tracking-[0.2em] uppercase text-muted-foreground animate-pulse-glow">
-        Листайте вниз →
+        Scroll down →
       </div>
     </section>
   );

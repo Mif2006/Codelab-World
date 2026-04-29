@@ -19,10 +19,10 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
   const [error, setError] = useState("");
 
   const validate = () => {
-    if (!form.name.trim()) return "Введите имя";
-    if (!/\S+@\S+\.\S+/.test(form.email)) return "Введите корректный email";
-    if (!/^\d{6,15}$/.test(form.phone)) return "Введите корректный телефон";
-    if (form.message.length < 5) return "Сообщение слишком короткое";
+    if (!form.name.trim()) return "Please enter your name";
+    if (!/\S+@\S+\.\S+/.test(form.email)) return "Please enter a valid email";
+    if (!/^\d{6,15}$/.test(form.phone)) return "Please enter a valid phone number";
+    if (form.message.length < 5) return "Message is too short";
     return "";
   };
 
@@ -49,7 +49,7 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
         }),
       });
 
-      alert("Сообщение отправлено 🚀");
+      alert("Message sent successfully 🚀");
 
       setForm({
         name: "",
@@ -59,7 +59,7 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
         message: "",
       });
     } catch (err) {
-      alert("Ошибка отправки");
+      alert("Failed to send message");
     }
   };
 
@@ -77,7 +77,7 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
     }
   }, [isActive]);
 
-  const title = "Свяжитесь с нами";
+  const title = "Get in Touch";
 
   return (
     <section
@@ -85,7 +85,7 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
       className="section-panel flex flex-col lg:flex-row relative min-h-screen py-20 lg:py-0 overflow-x-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <img src={sectionContact} alt="Contact bg" className="w-full h-full object-cover opacity-50" />
+        <img src={sectionContact} alt="Contact background" className="w-full h-full object-cover opacity-50" />
         <div
           className="absolute inset-0"
           style={{
@@ -111,11 +111,9 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
         </div>
         <div className="w-16 lg:w-24 h-[1px] bg-primary my-6 lg:my-10" />
         <p className="font-body text-muted-foreground text-sm max-w-sm leading-relaxed">
-          Есть идея для сайта? Давайте создадим нечто выдающееся вместе. Каждый успешный веб-проект
-          начинается с простого разговора.
+          Have an idea for a website? Let's create something extraordinary together. 
+          Every successful web project starts with a simple conversation.
         </p>
-
-     
       </div>
 
       {/* RIGHT SIDE: Functional Form (from Component 1) */}
@@ -123,19 +121,19 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
         <div className="relative w-full max-w-md">
           {/* Accent Image */}
           <div className="hidden lg:block absolute -top-20 -right-20 w-48 h-48 overflow-hidden opacity-40 animate-float pointer-events-none">
-            <img src={heroBg} alt="Accent" className="w-full h-full object-cover" />
+            <img src={heroBg} alt="Decorative accent" className="w-full h-full object-cover" />
           </div>
 
           <div className="relative z-20 space-y-6 bg-background/5 lg:bg-transparent p-6 lg:p-0 rounded-2xl border border-white/5 lg:border-none backdrop-blur-sm lg:backdrop-blur-none">
             {/* NAME */}
             <div>
-              <label className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Имя</label>
+              <label className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Name</label>
               <input
                 type="text"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full bg-transparent border-b border-border py-3 font-body text-foreground focus:outline-none focus:border-primary transition-colors duration-300"
-                placeholder="Ваше имя"
+                placeholder="Your name"
               />
             </div>
 
@@ -147,13 +145,13 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full bg-transparent border-b border-border py-3 font-body text-foreground focus:outline-none focus:border-primary transition-colors duration-300"
-                placeholder="ваш@email.com"
+                placeholder="your@email.com"
               />
             </div>
 
             {/* PHONE (Logic from Component 1) */}
             <div>
-              <label className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Телефон</label>
+              <label className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Phone</label>
               <div className="flex gap-2">
                 <select
                   value={form.countryCode}
@@ -178,13 +176,13 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
 
             {/* MESSAGE */}
             <div>
-              <label className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Сообщение</label>
+              <label className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Message</label>
               <textarea
                 rows={3}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full bg-transparent border-b border-border py-3 font-body text-foreground focus:outline-none focus:border-primary transition-colors duration-300 resize-none"
-                placeholder="Расскажите о вашей идее..."
+                placeholder="Tell us about your idea..."
               />
             </div>
 
@@ -197,7 +195,7 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
               data-cursor-hover
               className="magnetic-btn w-full py-4 border border-gold font-body text-[10px] lg:text-xs tracking-[0.3em] uppercase text-primary hover:bg-primary hover:text-black transition-all duration-500 mt-4"
             >
-              Отправить сообщение
+              Send Message
             </button>
           </div>
 
@@ -208,7 +206,7 @@ const ContactSection = ({ isActive }: { isActive: boolean }) => {
 
       {/* Bottom copyright (from Component 2) */}
       <div className="absolute bottom-6 left-0 right-0 text-center z-10 font-body text-[9px] lg:text-[10px] tracking-[0.3em] uppercase text-muted-foreground px-4">
-        © 2026 Code Lab. Все права защищены.
+        © 2026 Code Lab. All rights reserved.
       </div>
     </section>
   );

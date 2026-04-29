@@ -90,7 +90,7 @@ const DesktopModal = ({ project, onClose }: { project: Project; onClose: () => v
                     src={activeMedia}
                     onClick={() => setFullscreen(true)}
                     className="w-full h-full object-cover cursor-zoom-in"
-                    alt="Project view"
+                    alt="Project preview"
                   />
                 )}
               </div>
@@ -107,7 +107,7 @@ const DesktopModal = ({ project, onClose }: { project: Project; onClose: () => v
                   rel="noreferrer"
                   className="mt-4 inline-block text-center border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-black transition"
                 >
-                  Смотреть проект
+                  View Project
                 </a>
               </div>
             </div>
@@ -135,7 +135,7 @@ const DesktopModal = ({ project, onClose }: { project: Project; onClose: () => v
                     activeMedia === img ? "border-primary" : "border-white/10"
                   }`}
                 >
-                  <img src={img} alt={`Thumb ${i}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -150,7 +150,7 @@ const DesktopModal = ({ project, onClose }: { project: Project; onClose: () => v
               <img
                 src={activeMedia}
                 className="max-h-full max-w-full object-contain"
-                alt="Fullscreen view"
+                alt="Fullscreen preview"
               />
             </div>
           )}
@@ -228,7 +228,7 @@ const MobileModal = ({ project, onClose }: { project: Project; onClose: () => vo
                   src={activeMedia}
                   onClick={() => setFullscreen(true)}
                   className="w-full h-full object-cover cursor-zoom-in"
-                  alt="Project view"
+                  alt="Project preview"
                 />
               )}
             </div>
@@ -256,7 +256,7 @@ const MobileModal = ({ project, onClose }: { project: Project; onClose: () => vo
                     activeMedia === img ? "border-primary" : "border-white/10"
                   }`}
                 >
-                  <img src={img} className="w-full h-full object-cover" alt={`Thumb ${i}`} />
+                  <img src={img} className="w-full h-full object-cover" alt={`Thumbnail ${i + 1}`} />
                 </button>
               ))}
             </div>
@@ -272,7 +272,7 @@ const MobileModal = ({ project, onClose }: { project: Project; onClose: () => vo
                 rel="noreferrer"
                 className="inline-block border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-black transition"
               >
-                Смотреть проект
+                View Project
               </a>
             </div>
           </div>
@@ -285,7 +285,7 @@ const MobileModal = ({ project, onClose }: { project: Project; onClose: () => vo
           className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out z-[60]"
           onClick={() => setFullscreen(false)}
         >
-          <img src={activeMedia} className="max-h-full max-w-full object-contain" alt="Fullscreen" />
+          <img src={activeMedia} className="max-h-full max-w-full object-contain" alt="Fullscreen preview" />
         </div>
       )}
     </>

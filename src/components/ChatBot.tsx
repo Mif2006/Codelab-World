@@ -13,13 +13,13 @@ async function sendToApi(name: string, contact: string, message: string) {
   // Parse contact: prefer email, fallback to phone, or default
   if (contact.includes("@")) {
     email = contact;
-    phone = "Не указан";
+    phone = "Not provided";
   } else if (contact.match(/^[\d\s\+\-\(\)]{7,}$/)) {
     phone = contact;
     email = "not-provided@example.com";
   } else {
     email = "not-provided@example.com";
-    phone = "Не указан";
+    phone = "Not provided";
   }
 
   try {
@@ -51,28 +51,28 @@ interface NavCard {
 
 // ─── Section nav cards ───────────────────────────────────────────────────────
 const NAV_CARDS: NavCard[] = [
-  { label: "Портфолио и цены", desc: "Наши работы и стоимость", hash: "#projects", icon: "◈" },
+  { label: "Portfolio & Pricing", desc: "See our work and pricing", hash: "#projects", icon: "◈" },
 ];
 
 // ─── Conversation script ─────────────────────────────────────────────────────
 const STEP_MESSAGES: Record<Step, string> = {
   greeting:
-    "Привет! Я помогу связать вас с командой CodeLab.\n\nМы создаём сайты под ключ — от лендингов до интернет-магазинов. Хотите посмотреть наши работы или сразу оставить заявку?",
+    "Hi there! I'm here to connect you with the CodeLab team.\n\nWe build turnkey websites — from landing pages to full e-commerce stores. Would you like to see our portfolio or get started with a project?",
   name:
-    "Отлично! Как вас зовут?",
+    "Great! What's your name?",
   contact:
-    "Приятно познакомиться! Оставьте, пожалуйста, ваш телефон или email — мы напишем вам напрямую.",
+    "Nice to meet you! Please share your phone number or email — we'll reach out to you directly.",
   message:
-    "И последнее: кратко опишите, что вам нужно. Какой сайт? Есть ли примеры или идеи?",
+    "Last thing: briefly tell us what you're looking for. What kind of site? Any examples or ideas in mind?",
   done:
-    "Готово! Ваша заявка принята 🎉\n\nНаш менеджер свяжется с вами в течение рабочего дня. Если хотите — можете изучить наши работы или написать нам напрямую через форму.",
+    "All set! Your inquiry has been received 🎉\n\nOur team will get back to you within one business day. In the meantime, feel free to explore our portfolio or reach out directly via the contact form.",
 };
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 let _id = 0;
 const uid = () => ++_id;
 const getTime = () =>
-  new Date().toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+  new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
 
 // ─── Styles ──────────────────────────────────────────────────────────────────
 const S: Record<string, React.CSSProperties> = {
@@ -407,7 +407,7 @@ export default function ChatWidget() {
       // "done" or unexpected — just acknowledge
       setMessages((p) => [...p, {
         id: uid(), role: "bot",
-        text: "Ваш вопрос получен. Наша команда скоро выйдет на связь!",
+        text: "Thanks for your message! Our team will be in touch shortly.",
       }]);
     }
   };
@@ -428,9 +428,9 @@ export default function ChatWidget() {
   // ── Placeholder per step ──
   const placeholder: Record<Step, string> = {
     greeting: "",
-    name: "Ваше имя...",
-    contact: "Телефон или email...",
-    message: "Опишите ваш проект...",
+    name: "Your name...",
+    contact: "Phone or email...",
+    message: "Describe your project...",
     done: "",
   };
 
@@ -490,7 +490,7 @@ export default function ChatWidget() {
                 <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
                   <path d="M6 1v10M1 6h10M3.5 3.5l5 5M8.5 3.5l-5 5" stroke={GOLD} strokeWidth="1.4" strokeLinecap="round"/>
                 </svg>
-                AI-ассистент
+                AI Assistant
               </div>
             </div>
             <div style={{ width:7,height:7,borderRadius:"50%",background:"#4ade80",boxShadow:"0 0 6px rgba(74,222,128,.6)",marginRight:"2px" }}/>
@@ -509,9 +509,9 @@ export default function ChatWidget() {
           {/* Step hint label */}
           {step !== "greeting" && step !== "done" && (
             <div style={{ padding:"5px 13px 0", fontSize:"10px", fontFamily:"system-ui,sans-serif", color:"rgba(201,168,76,.38)", letterSpacing:"0.06em", textTransform:"uppercase", flexShrink:0 }}>
-              { step === "name"    && "Шаг 1 из 3 — Ваше имя" }
-              { step === "contact" && "Шаг 2 из 3 — Контакт" }
-              { step === "message" && "Шаг 3 из 3 — Ваш запрос" }
+              { step === "name"    && "Step 1 of 3 — Your name" }
+              { step === "contact" && "Step 2 of 3 — Contact info" }
+              { step === "message" && "Step 3 of 3 — Your request" }
             </div>
           )}
 
@@ -559,7 +559,7 @@ export default function ChatWidget() {
               <div style={{ display:"flex",alignItems:"center",gap:"8px",padding:"0 12px 2px",flexShrink:0 }}>
                 <div style={{ flex:1,height:"1px",background:"rgba(201,168,76,0.1)" }}/>
                 <span style={{ fontSize:"9px",color:"rgba(201,168,76,0.28)",fontFamily:"system-ui,sans-serif",letterSpacing:".06em",textTransform:"uppercase" as const,whiteSpace:"nowrap" as const }}>
-                  Ваш ответ
+                  Your reply
                 </span>
                 <div style={{ flex:1,height:"1px",background:"rgba(201,168,76,0.1)" }}/>
               </div>
@@ -589,7 +589,7 @@ export default function ChatWidget() {
                   }}
                   onClick={handleSubmit}
                   disabled={!input.trim() || typing}
-                  title="Отправить"
+                  title="Send"
                 >
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                     <path d="M22 2L11 13" stroke="#0a0602" strokeWidth="2.2" strokeLinecap="round"/>
@@ -600,7 +600,7 @@ export default function ChatWidget() {
             </>
           )}
 
-          {/* Done state — show a "Написать снова" restart */}
+          {/* Done state — show a "Send another inquiry" restart */}
           {step === "done" && (
             <div style={{ padding:"8px 12px 12px", flexShrink:0, display:"flex", justifyContent:"center" }}>
               <button
@@ -627,7 +627,7 @@ export default function ChatWidget() {
                 }}
                 className="cl-restart"
               >
-                Отправить ещё одну заявку
+                Submit another inquiry
               </button>
             </div>
           )}
@@ -643,7 +643,7 @@ export default function ChatWidget() {
           onClick={() => setOpen((v) => !v)}
           onMouseEnter={() => setHoverBtn(true)}
           onMouseLeave={() => setHoverBtn(false)}
-          title={open ? "Закрыть" : "Написать нам"}
+          title={open ? "Close" : "Message us"}
         >
           {/* Unread badge */}
           {!open && unread > 0 && (
