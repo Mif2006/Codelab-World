@@ -52,19 +52,19 @@ const workTypes: WorkType[] = [
     img: Project10, 
     title: "Landing Page", 
     category: "Landing Page", 
-    priceUsd: "from $100"
+    priceUsd: "from $199"
   },
   { 
     img: Project11, 
     title: "E-commerce Store", 
     category: "E-commerce", 
-    priceUsd: "from $300"
+    priceUsd: "from $499"
   },
   { 
     img: Project12, 
     title: "Corporate Website", 
     category: "Corporate", 
-    priceUsd: "from $200"
+    priceUsd: "from $399"
   },
   { 
     img: Project28, 
